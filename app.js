@@ -19,10 +19,6 @@ const mapData = {
   },
 };
 
-
-
-
-
 //Options for Player Colors
 const playerColors = ["blue", "red", "orange", "yellow", "green", "purple"];
 
@@ -141,8 +137,9 @@ function getRandomSafeSpot() {
     }
 
     function attemptGrabCoin(x, y) {
-        const key = getKeyString (x, y);
+        const key = getKeyString(x, y);
         if (coins[key]) {
+            // Remove this key from data, then uptick Player's coin count
             firebase.database().ref(`coins/${key}`).remove();
             playerRef.update({
                 coins: players[playerId].coins + 1,

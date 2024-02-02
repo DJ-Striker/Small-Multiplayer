@@ -121,6 +121,10 @@ function getRandomSafeSpot() {
     let coins = {};
     let coinElements = {};
 
+    const gameContainer = document.querySelector(".game-container");
+    const playerNameInput = document.querySelector("#player-name");
+    const playerColorButton = document.querySelector("#player-color");
+
 
     function placeCoin() {
         const {x,y} = getRandomSafeSpot();
@@ -148,9 +152,7 @@ function getRandomSafeSpot() {
     }
 
 
-    const gameContainer = document.querySelector(".game-container");
-    const playerNameInput = document.querySelector("#player-name");
-    const playerColorButton = document.querySelector("#player-color");
+    
 
     function handleArrowPress(xChange, yChange) {
         const newX = players[playerId].x + xChange;
@@ -258,7 +260,7 @@ function getRandomSafeSpot() {
             coinElement.style.transform = `translate3d(${left}, ${top}, 0)`;
 
             //Reference for removal later and add to DOM
-            coinElement[key] = coinElement;
+            coinElements[key] = coinElement;
             gameContainer.appendChild(coinElement);
         })
 
